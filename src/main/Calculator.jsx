@@ -32,16 +32,14 @@ export default class Calculator extends Component {
             this.setState({ operacao, valorCorrente: 1, limparDisplay: true })
         } else {
             const equals = operacao === '='
-            const currentOperation = this.state.operacao
+            const operacaoCorrente = this.state.operacao
 
             const valor = [...this.state.valor]
             try {
-                valor[0] = eval(`${valor[0]} ${currentOperation} ${valor[1]}`)
-            } catch(e) {
+                valor[0] = eval(`${valor[0]} ${operacaoCorrente} ${valor[1]}`)
+            } catch (e) {
                 valor[0] = this.state.valor[0]
             }
-
-            valor[1] = 0
 
             this.setState({
                 valorDisplay: valor[0],
@@ -60,15 +58,15 @@ export default class Calculator extends Component {
 
         const limparDisplay = this.state.valorDisplay === '0'
             || this.state.limparDisplay
-        const currentValue = limparDisplay ? '' : this.state.valorDisplay
-        const valorDisplay = currentValue + n
+        const valorCorrente = limparDisplay ? '' : this.state.valorDisplay
+        const valorDisplay = valorCorrente + n
         this.setState({ valorDisplay, limparDisplay: false })
 
         if (n !== '.') {
             const i = this.state.valorCorrente
-            const newValue = parseFloat(valorDisplay)
+            const novoValor = parseFloat(valorDisplay)
             const valor = [...this.state.valor]
-            valor[i] = newValue
+            valor[i] = novoValor
             this.setState({ valor })
         }
     }
