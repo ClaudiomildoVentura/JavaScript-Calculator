@@ -24,11 +24,11 @@
     grid-column: span 3;
 }
 
-.button.operation {
+.button.operacao {
     background-color: #fa8231;
     color: #FFF;
 }
 
-.button.operation:active {
+.button.operacao:active {
     background-color: #fa8231cc;
 }
